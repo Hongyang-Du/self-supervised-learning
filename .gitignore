@@ -1,0 +1,30 @@
+# Virtual environment
+venv/
+.env/
+__pycache__/
+*.pyc
+
+# Checkpoints & weights
+checkpoints/
+runs/
+*.pth
+*.ckpt
+
+# Logs
+*.log
+*.csv
+*.jsonl
+wandb/
+tensorboard/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Build / cache
+*.egg-info/
+dist/
+build/
