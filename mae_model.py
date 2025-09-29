@@ -15,6 +15,7 @@ class PatchEmbed(nn.Module):
         self.patch_size = patch_size
         self.grid = img_size // patch_size
         self.num_patches = self.grid * self.grid
+        self.patch_dim = patch_size * patch_size * in_chans 
         self.proj = nn.Conv2d(in_chans, embed_dim, kernel_size=patch_size, stride=patch_size)
 
     def forward(self, x):

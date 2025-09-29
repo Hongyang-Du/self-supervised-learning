@@ -46,7 +46,7 @@ def plot_train_val(csv_path, out_dir):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--csv_path", type=str, required=True, help="Path to train_log.csv")
-    parser.add_argument("--out_dir", type=str, required=True, help="Directory to save plots")
+    parser.add_argument("--out_dir", type=str, default = "plots", help="Directory to save plots")
     args = parser.parse_args()
 
     plot_train_val(args.csv_path, args.out_dir)
