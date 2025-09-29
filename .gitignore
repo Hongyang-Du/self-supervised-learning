@@ -9,7 +9,7 @@ checkpoints/
 runs/
 *.pth
 *.ckpt
-
+*.csv
 # Logs
 *.log
 *.csv
