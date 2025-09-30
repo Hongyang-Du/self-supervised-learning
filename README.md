@@ -17,13 +17,19 @@ It includes two main stages:
   - `MAEDecoder`: lightweight decoder (reconstructs masked patches)  
   - `MAE`: full pipeline (patchify → mask → encode → decode → loss)
 
+- **`linear_probe_model.py`**  
+  Defines the **Linear Probe model**:  
+  - Loads a frozen MAE encoder  
+  - Adds a linear classification head (embed_dim → num_classes)  
+  - Used in `linear_probing_train.py` for downstream evaluation
+
 - **Training scripts**  
   - `train_mae.py`: self-supervised pretraining  
-  - `linear_probing_train.py`: freeze encoder and train a linear classifier  
+  - `train_linear_probe.py`: freeze encoder and train a linear classifier  
 
 - **Utilities**  
   - `reconstruct.py`: visualize masked images and reconstructions  
-  - `plot_logs.py` / `plot_multi_logs.py` / `plot_linear_probing.py`: visualize loss curves and metrics  
+  - `plot_logs.py` / `plot_multi_logs.py` / `plot_linear_probe_logs.py`: visualize loss curves and metrics  
 
 - **Outputs**  
   - `runs/mae_pretrain/`: checkpoints, logs, configs for pretraining  
@@ -81,7 +87,7 @@ sbatch scripts/mask_ratio_test.sh
 
 ## 🌌 Reconstruct Result
 ![25% Masked](reconstruct_results/recon_mask_0.25.png)
-![50% Masked](reconstruct_results/recon_mask_0.50.png)
+![50% Masked](reconstruct_results/recon_mask_0.5.png)
 ![75% Masked](reconstruct_results/recon_mask_0.75.png)
 
 ## 📊 Training Curves
@@ -99,7 +105,7 @@ The encoder is **frozen**, and only a linear classification head is trained.
 
 ### Single Run
 ```bash
-python linear_probing_train.py \
+python train_linear_probe.py \
   --ckpt runs/mae_pretrain/mask_0.75/ckpts/best_encoder.pth \
   --epochs 50 \
   --batch_size 64 \

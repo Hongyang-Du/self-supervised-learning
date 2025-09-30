@@ -12,7 +12,7 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 from mae_model import PatchEmbed, MAEEncoder
-
+from linear_probe_model import LinearProbe
 
 # ------------------------------
 # Dataset Loader
@@ -51,26 +51,6 @@ def get_galaxy10_dataloaders(batch_size, num_workers=4):
                             shuffle=False, num_workers=num_workers)
     return train_loader, val_loader
 
-
-# ------------------------------
-# Linear Probe Model
-# ------------------------------
-class LinearProbe(nn.Module):
-    def __init__(self, embed_dim=768, num_classes=10,
-                 img_size=224, patch_size=16, in_chans=3,
-                 depth=12, num_heads=12):
-        super().__init__()
-        self.patch_embed = PatchEmbed(img_size, patch_size, in_chans, embed_dim)
-        self.encoder = MAEEncoder(embed_dim=embed_dim, depth=depth, num_heads=num_heads)
-        for p in self.encoder.parameters():
-            p.requires_grad = False  # freeze encoder
-        self.head = nn.Linear(embed_dim, num_classes)
-
-    def forward(self, x):
-        x = self.patch_embed(x)  # [B, N, D]
-        z = self.encoder(x)      # [B, N, D]
-        z_mean = z.mean(dim=1)   # global average pooling
-        return self.head(z_mean)
 
 
 # ------------------------------

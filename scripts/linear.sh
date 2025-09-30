@@ -19,7 +19,7 @@ for ratio in "${ratios[@]}"; do
   ckpt="runs/mae_pretrain/${ratio}/ckpts/best_encoder.pth"
   echo "🔍 Running linear probing with $ckpt"
 
-  python linear_probing_train.py \
+  python train_linear_probe.py \
     --ckpt "$ckpt" \
     --epochs 50 \
     --batch_size 64 \
