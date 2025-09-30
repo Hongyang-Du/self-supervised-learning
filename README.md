@@ -85,7 +85,7 @@ sbatch scripts/mask_ratio_test.sh
 ```
 - `scripts/mask_ratio_test.sh` launches 3 jobs (mask ratios 0.25, 0.5, 0.75).
 
-## 🌌 Reconstruct Result
+## 🌌 Reconstruct Result (Mask 0.25/0.50/0.75)
 ![25% Masked](reconstruct_results/recon_mask_0.25.png)
 ![50% Masked](reconstruct_results/recon_mask_0.5.png)
 ![75% Masked](reconstruct_results/recon_mask_0.75.png)
