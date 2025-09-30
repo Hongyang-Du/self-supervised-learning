@@ -10,10 +10,10 @@
 module purge
 module load cuda
 source venv/bin/activate
-cd /users/hdu15/data/galaxy_mae   # ⚠️ 改成你项目的路径
+cd /users/hdu15/data/galaxy_mae  
 
-# 三个实验配置
-ratios=("mask_0.25" "mask_0.5" "mask_0.75")
+
+ratios=("mask_0.5" "mask_0.75")
 
 for ratio in "${ratios[@]}"; do
   ckpt="runs/mae_pretrain/${ratio}/ckpts/best_encoder.pth"
