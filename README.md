@@ -126,7 +126,12 @@ sbatch scripts/linear.sh
 Each probing run saves:
 - `linear_probe_best.pth`: best linear probe checkpoint  
 - `train_log.csv`: logs with `epoch,train_loss,val_loss,train_acc,val_acc`  
+## 📊 Training Curves
 
+![Train Accuracy Curve](linear_probe_logs/train_acc_overlay.png)
+![Train Loss Curve](linear_probe_logs/train_loss_overlay.png)
+![Validation Accuracy Curve](linear_probe_logs/val_acc_overlay.png)
+![Validation Loss Curve](linear_probe_logs/val_loss_overlay.png)
 ---
 
 ## ✅ Key Takeaways
